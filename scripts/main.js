@@ -16,14 +16,14 @@ function makeParty(party) {
         var eventArray = [];
         var drawDate = eventsList[i].dates.start.localDate;
         var drawName = eventsList[i].name;
-        // if (eventsList[i].priceRanges) {
-        //     eventsList[i].priceRanges[0].min + eventsList[i].priceRanges[0].max
-        // }
-        // else {
-        //     pass;
-        // }
+        if (eventsList[i].priceRanges) {
+            var prices = '$' + eventsList[i].priceRanges[0].min + ' - $' + eventsList[i].priceRanges[0].max;
+        }
+        else {
+            prices = 'No Prices Available'
+        }
         var drawEvent = $('<a>', {
-            text: drawDate + ' ' + drawName,
+            text: drawDate + ' ' + drawName + ' ' + prices,
             href: '#'
         });
         eventArray.push(drawEvent);
