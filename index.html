@@ -9,7 +9,35 @@
     <title>Mercedes-Benz Stadium Event guide</title>
 </head>
 <body>
-    
+    <div class = "navbar">
+        <a href="#home">Home</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+    </div>
+    <div class = "main">
+        <div class = "slide" data-slide>
+             <!-- Next and previous buttons -->
+             <a class="prev" data-prev>&#10094;</a>
+             <a class="next" data-next>&#10095;</a>  
+        </div>
+        <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span> 
+                <span class="dot" onclick="currentSlide(2)"></span> 
+                <span class="dot" onclick="currentSlide(3)"></span> 
+              </div>
+        <div class = "app">
+            <div class = "ticketMaster">
+                    <div class = "events" data-event-list></div>
+            </div>
+            <div class = "parkWhiz">
+
+            </div>
+        </div>
+        <div class = "aboutUs">
+
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="config/config.js"></script>
     <script src="scripts/main.js"></script>
 </body>
