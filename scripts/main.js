@@ -11,8 +11,8 @@ var imgArray = {
         },
         {
             "name": 'Peach Bowl',
-            "url": 'https://upload.wikimedia.org/wikipedia/en/thumb/3/39/Peach_Bowl_logo.svg/987px-Peach_Bowl_logo.svg.png'
-            // "url": 'http://10073-presscdn-0-14.pagely.netdna-cdn.com/wp-content/uploads/sites/5/2017/12/Hero-Image-1.jpg'
+            // "url": 'https://upload.wikimedia.org/wikipedia/en/thumb/3/39/Peach_Bowl_logo.svg/987px-Peach_Bowl_logo.svg.png'
+            "url": 'http://10073-presscdn-0-14.pagely.netdna-cdn.com/wp-content/uploads/sites/5/2017/12/Hero-Image-1.jpg'
         }
     ]
 }
@@ -93,6 +93,14 @@ function eraseCurrentSlide() {
     $('[data-slide-image]').remove();
 }
 
+function removeActiveDotClass(dots, currentSlide) {
+    $(dots[currentSlide]).removeClass("active");
+}
+
+function addActiveDotClass(dots, currentSlide) {
+    $(dots[currentSlide]).attr("class", "dot active");
+}
+
 function slideShow() {
     var slide = makeImages();
     var dots = makeDots();
@@ -101,6 +109,7 @@ function slideShow() {
     addSlide(slide[currentSlide]);
     drawDots(dots);
     $('[data-prev]').on('click', function(){
+        removeActiveDotClass(dots, currentSlide);
         currentSlide--
         if (currentSlide < 0) {
             currentSlide = 2;
@@ -108,8 +117,10 @@ function slideShow() {
         console.log('went down');
         eraseCurrentSlide()
         addSlide(slide[currentSlide]);
+        addActiveDotClass(dots, currentSlide);
     })
     $('[data-next]').on('click', function(){
+        removeActiveDotClass(dots, currentSlide);
         currentSlide++
         if (currentSlide > 2) {
             currentSlide = 0;
@@ -117,6 +128,7 @@ function slideShow() {
         console.log('went up');
         eraseCurrentSlide();
         addSlide(slide[currentSlide]);
+        addActiveDotClass(dots, currentSlide);
     })
 }
 
