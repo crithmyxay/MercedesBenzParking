@@ -12,6 +12,7 @@ var imgArray = {
         {
             "name": 'Peach Bowl',
             "url": 'https://upload.wikimedia.org/wikipedia/en/thumb/3/39/Peach_Bowl_logo.svg/987px-Peach_Bowl_logo.svg.png'
+            // "url": 'http://10073-presscdn-0-14.pagely.netdna-cdn.com/wp-content/uploads/sites/5/2017/12/Hero-Image-1.jpg'
         }
     ]
 }
@@ -54,9 +55,9 @@ function makeImages() {
     var slideArray = [];
     for (i=0; i<imgPath.length; i++) {
         var $drawLink = $('<a>', {
-            class: 'slideLinks',
+            class: 'slideLinks fade',
             href: '#',
-            // data: 'slide-image'
+            'data-slide-image': ''
         })
         var $drawImg = $('<img>', {
         src: imgPath[i].url,
@@ -68,18 +69,37 @@ function makeImages() {
     return slideArray;
 }
 
+function makeDots() {
+    var imgPath = imgArray.images
+    var dotsArray = [];
+    for (i=0; i<imgPath.length; i++) {
+        var $drawDot = $('<span>', {
+        class: 'dot'
+        })
+        dotsArray.push($drawDot);
+    }
+    return dotsArray;
+}
+
 function addSlide(slide) {
     $('[data-slide]').append(slide);
 }
 
+function drawDots(dots) {
+    $('[data-dot]').append(dots);
+}
+
 function eraseCurrentSlide() {
-    $('.slideLinks').remove();
+    $('[data-slide-image]').remove();
 }
 
 function slideShow() {
-    var slide = makeImages()
+    var slide = makeImages();
+    var dots = makeDots();
     var currentSlide = 0;
-    addSlide(slide[currentSlide])
+    var activeDot = $(dots[currentSlide]).attr("class", "dot active");
+    addSlide(slide[currentSlide]);
+    drawDots(dots);
     $('[data-prev]').on('click', function(){
         currentSlide--
         if (currentSlide < 0) {
