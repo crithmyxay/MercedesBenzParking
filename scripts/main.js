@@ -21,10 +21,30 @@ function getMbsEvents() {
     return $.get(MBS_API);
 }
 
+function sortDate(list) {
+    var eventsList = list._embedded.events;
+    var dateArray =[];
+    var eventArray =[];
+    for (var i=0; i< eventsList.length; i++) {
+            var drawDate = eventsList[i].dates.start.localDate;
+            dateArray.push(drawDate);
+    }
+    console.log('working');
+    dateArray.sort()
+    for (var j=0; j<dateArray.length; j++) {
+        for (var k=0; k<eventsList.length; k++) {
+            if (dateArray[j] === eventsList[k].dates.start.localDate) {
+                eventArray.push(eventsList[k]);
+            }
+        }
+    }
+    return eventArray;
+}
+
 //pulls information from TicketMaster API and turns them into a link. 
 function makeParty(party) {
     var eventsList = party._embedded.events;
-    for (i=0; i<= eventsList.length; i++) {
+    for (var i=0; i< eventsList.length; i++) {
         var eventArray = [];
         var drawDate = eventsList[i].dates.start.localDate;
         var drawName = eventsList[i].name;
@@ -46,7 +66,8 @@ function makeParty(party) {
 
 function drawAllEvents() {
     getMbsEvents()
-        .then(makeParty)
+        .then(sortDate)
+        // .then(makeParty)
 }
 
 // Creates an array of slide images that are also links. 
@@ -131,6 +152,7 @@ function slideShow() {
         addActiveDotClass(dots, currentSlide);
     })
 }
+
 
 
 drawAllEvents();
