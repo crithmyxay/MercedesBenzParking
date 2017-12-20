@@ -3,7 +3,7 @@ window.onload = function(){
     var month_name = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'Novermber', 'December'];
     var month = d.getMonth();     //0-11
     var year = d.getFullYear();  //2017
-    var first_date = month_name[month] + " " + 1 + " " + year;
+    var first_date = month_name[month] + " " + 1 + " " + year +30;
     var tmp = new Date(first_date).toDateString();
     var first_day = tmp.substring(0, 3);
     var day_name = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -39,14 +39,17 @@ function get_calendar(day_no, days){
     var count = 1;
     for(; c<=6; c++){
         var td = document.createElement('td');
-        td.innerHTML = count;
+        var span = document.createElement('span');
+        span.innerHTML = count;
+        span.classList.add("has_events");
         count++;
+        td.appendChild(span);
         tr.appendChild(td);
     }
     table.appendChild(tr);
 
     // rest of the date rows
-    for(var r=3; r<=6; r++){
+    for(var r=3; r<=7; r++){
         tr = document.createElement('tr');
         for(var c=0; c<=6; c++){
             if(count > days){
@@ -54,8 +57,10 @@ function get_calendar(day_no, days){
                 return table;
             }
             var td = document.createElement('td');
-            td.innerHTML = count;
+            var span = document.createElement('span');
+            span.innerHTML = count;
             count++;
+            td.appendChild(span);
             tr.appendChild(td);
         }
         table.appendChild(tr);
