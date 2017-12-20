@@ -4,13 +4,13 @@ body {
     width: 360px;
     height: auto;
     background-color: black;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 /* The navigation bar */
 .navbar {
     overflow: hidden;
-    background-color: #333;
-    position: fixed; /* Set the navbar to fixed position */
+    background-color: #fff;
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
 }
@@ -18,16 +18,73 @@ body {
 /* Links inside the navbar */
 .navbar a {
     float: left;
-    display: block;
-    color: #f2f2f2;
+    display: inline-block;
+    color: #332929;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
+div.app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.app > div {
+    display: flex;
+    justify-content: center;
+    border: 1px white solid;
+    width: 95%;
+    margin: 2%;
+}
+
+div.events {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #a001019e;
+    color: white;
+    height: 320px;
+    width: 100%;
+    overflow: scroll;
+}
+
+.tableDiv {
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    text-align: center;
+}
+
+table, th, td {
+    border: 1px solid #bbaeae;
+ }
+
+h2 {
+    /* font-size: 2rem; */
+    text-align: center;
+}
+
+tr {
+    color: white;
+}
+
+a.logo {
+    padding: 0px;
+    margin-top: 14px;
+}
+
+.logo img {
+    width: auto;
+    height: 25px;
+}
+
 /* Main content */
 .main {
-    margin-top: 40px; /* Add a top margin to avoid content overlay */
+    
 }
 
 .app {
@@ -47,17 +104,17 @@ body {
 * {box-sizing:border-box}
 
 /* Slideshow container */
-/* .slide {
-  max-width: 1000px;
+.slide {
+  /* max-width: 1000px; */
   position: relative;
   margin: auto;
-} */
+}
 
 /* Next & previous buttons */
 .prev, .next {
   cursor: pointer;
   position: absolute;
-  top: 50%;
+  top: 100%;
   width: auto;
   margin-top: -22px;
   padding: 16px;
@@ -75,9 +132,9 @@ body {
 }
 
 /* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
+/* .prev:hover, .next:hover {
   background-color: rgba(0,0,0,0.8);
-}
+} */
 
 /* Caption text */
 .text {
@@ -122,4 +179,73 @@ body {
 @keyframes fade {
   from {opacity: .4} 
   to {opacity: 1}
+}
+
+@media screen and (min-width: 360px) {
+    body {
+        width: 100%;
+        height: auto;
+    }
+
+    a.logo {
+        padding: 0px;
+        margin-top: 14px;
+    }
+
+    .logo img {
+        width: auto;
+        height: 35px;
+    }
+}
+
+@media screen and (min-width:768px) {
+    body {
+        width: 100%;
+        height: auto;
+    }
+
+    a.logo {
+        padding: 0px;
+        margin-top: 14px;
+    }
+
+    div.app {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .logo img {
+        width: auto;
+        height: 45px;
+    }
+
+@media screen and (min-width: 1200px) {
+    body {
+        width: 100%;
+        height: auto;
+        font-size: 1.5rem;
+    }
+
+    a.logo {
+        padding: 0px;
+        margin-top: 14px;
+    }
+
+    .logo img {
+        width: auto;
+        height: 55px;
+    }
+
+    div.app {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    div.events {
+        height: 650px;
+        width: 100%;
+        font-size: 1.5rem;
+    }  
 }
