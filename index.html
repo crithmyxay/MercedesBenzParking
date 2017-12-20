@@ -7,13 +7,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
     <link rel="stylesheet" href="stylesheets/stylesheet.css">
     <link rel="stylesheet" href="stylesheets/stylesheets-calendar.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
     <title>Mercedes-Benz Stadium Event guide</title>
 </head>
 <body>
     <div class = "navbar">
+        <a class="logo" href="#"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/ed/Mercedes-Benz_Stadium_logo.svg/1200px-Mercedes-Benz_Stadium_logo.svg.png" alt="_blank"></a>
         <a href="#home">Home</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
+        <a href="#ticketMaster">Events</a>
+        <a href="#aboutUs">About</a>
     </div>
     <div class = "main">
         <div class = "slide" data-slide>
@@ -24,7 +26,15 @@
         <div style="text-align:center" data-dot></div>
         <div class = "app">
             <div class = "ticketMaster">
-                    <div class = "events" data-event-list></div>
+                <div class = "events" data-event-list>
+                    <h2>Upcoming Events</h2>
+                    <div class="tableDiv">
+                        <table>
+                            <tbody class="eventList">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
             <div class = "parkWhiz">
 
@@ -47,5 +57,6 @@
     <script src="config/config.js"></script>
     <script src="scripts/main.js"></script>
     <script src="scripts/calendar.js"></script>
+    <script type="text/javascript" src="scripts/parking.js"></script>
 </body>
 </html>

@@ -2,17 +2,16 @@
 var imgArray = {
     'images': [
         {
-            "name": 'Taylor Swift',
+            "name": 'Taylor Swift Reputation Tour',
             "url": 'https://s1.ticketm.net/dam/a/375/606d24be-8ead-40aa-a622-22e5dfd02375_581101_TABLET_LANDSCAPE_LARGE_16_9.jpg'
         },
         {
-            "name": 'Falcons vs Panthers',
+            "name": 'Carolina Panthers vs Atlanta Falcons',
             "url": 'https://i.ytimg.com/vi/Qo5JwA1eBZs/maxresdefault.jpg'
         },
         {
-            "name": 'Peach Bowl',
-            "url": 'https://upload.wikimedia.org/wikipedia/en/thumb/3/39/Peach_Bowl_logo.svg/987px-Peach_Bowl_logo.svg.png'
-            // "url": 'http://10073-presscdn-0-14.pagely.netdna-cdn.com/wp-content/uploads/sites/5/2017/12/Hero-Image-1.jpg'
+            "name": 'Peach Bowl, UCF Knights vs Auburn Tigers',
+            "url": 'https://s1.ticketm.net/dam/a/69a/a2272570-eeee-4e1f-af6e-d37247f4469a_237181_RETINA_LANDSCAPE_16_9.jpg'
         }
     ]
 }
@@ -21,31 +20,78 @@ function getMbsEvents() {
     return $.get(MBS_API);
 }
 
+// Filters an array and removes any entries that are duplicated
+function removeDuplicateEntries(array) {
+    var uniqueArray = array.filter(function(elem, pos) {
+        return array.indexOf(elem) == pos;
+      });
+    return uniqueArray;
+}
+
+//Sorts an array of dates and returns events in order by date.
+function sortDate(list) {
+    var eventsList = list._embedded.events;
+    var dateArray =[];
+    var eventArray =[];
+    for (var i=0; i< eventsList.length; i++) {
+            var drawDate = eventsList[i].dates.start.localDate;
+            dateArray.push(drawDate);
+    }
+    dateArray.sort()
+    for (var j=0; j<dateArray.length; j++) {
+        for (var k=0; k<eventsList.length; k++) {
+            if (dateArray[j] === eventsList[k].dates.start.localDate) {
+                    eventArray.push(eventsList[k]);
+            }
+        }
+    }
+    var fixedArray = removeDuplicateEntries(eventArray);
+    return fixedArray;
+}
+
 //pulls information from TicketMaster API and turns them into a link. 
 function makeParty(party) {
-    var eventsList = party._embedded.events;
-    for (i=0; i<= eventsList.length; i++) {
+    for (var i=0; i< party.length; i++) {
         var eventArray = [];
-        var drawDate = eventsList[i].dates.start.localDate;
-        var drawName = eventsList[i].name;
-        if (eventsList[i].priceRanges) {
-            var prices = '$' + eventsList[i].priceRanges[0].min + ' - $' + eventsList[i].priceRanges[0].max;
+        var drawDate = party[i].dates.start.localDate;
+        var drawName = party[i].name;
+        if (party[i].priceRanges) {
+            var prices = '$' + party[i].priceRanges[0].min + ' - $' + party[i].priceRanges[0].max;
         }
         else {
             var prices = 'No Prices Available'
         }
-        var $drawEvent = $('<a>', {
-            text: drawDate + ' ' + drawName + ' ' + prices,
+        var $drawEvent = $('<tr>', {
+        })
+        var $tableDate = $('<td>', {
+            text: drawDate,
+            class: 'date'
+        })
+        var $tableName = $('<td>', {
+            class: 'name'
+        })
+        var $tablePrices = $('<td>', {
+            text: prices,
+            class: 'prices'
+        })
+        var $eventLink = $('<a>', {
+            text: drawName,
             href: '#'
         })
-        eventArray.push($drawEvent);
-        $('[data-event-list]').append(eventArray);
+        $drawEvent.append($tableDate);
+        $drawEvent.append($tableName);
+        $tableName.append($eventLink);
+        $drawEvent.append($tablePrices);
+        // eventArray.push($drawEvent);
+        $('.eventList').append($drawEvent);
     }
     return party
 }
 
+// Function that creates events from TicketMaster API to a table
 function drawAllEvents() {
     getMbsEvents()
+        .then(sortDate)
         .then(makeParty)
 }
 
@@ -69,6 +115,7 @@ function makeImages() {
     return slideArray;
 }
 
+// Creates the dots that highlight which image is being shown in slideshow
 function makeDots() {
     var imgPath = imgArray.images
     var dotsArray = [];
@@ -92,7 +139,16 @@ function drawDots(dots) {
 function eraseCurrentSlide() {
     $('[data-slide-image]').remove();
 }
+ 
+function removeActiveDotClass(dots, currentSlide) {
+    $(dots[currentSlide]).removeClass("active");
+}
 
+function addActiveDotClass(dots, currentSlide) {
+    $(dots[currentSlide]).attr("class", "dot active");
+}
+
+//Takes images from an array and turns them into a slideshow for main viewing page. 
 function slideShow() {
     var slide = makeImages();
     var dots = makeDots();
@@ -101,29 +157,27 @@ function slideShow() {
     addSlide(slide[currentSlide]);
     drawDots(dots);
     $('[data-prev]').on('click', function(){
+        removeActiveDotClass(dots, currentSlide);
         currentSlide--
         if (currentSlide < 0) {
             currentSlide = 2;
         }
-        console.log('went down');
         eraseCurrentSlide()
         addSlide(slide[currentSlide]);
+        addActiveDotClass(dots, currentSlide);
+
     })
     $('[data-next]').on('click', function(){
+        removeActiveDotClass(dots, currentSlide);
         currentSlide++
         if (currentSlide > 2) {
             currentSlide = 0;
         }
-        console.log('went up');
         eraseCurrentSlide();
         addSlide(slide[currentSlide]);
+        addActiveDotClass(dots, currentSlide);
     })
 }
 
-
 drawAllEvents();
 slideShow();
-
-
-
-
