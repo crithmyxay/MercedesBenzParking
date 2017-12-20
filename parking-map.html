@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Event Parking Map</title>
+    <style>
+        #map {
+            height: 100%;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .labels {
+            color: white;
+            /* background-color: red; */
+            font-family:"Lucida Grande", "Arial", sans-serif;
+            font-size: 8px;
+            text-align: left;
+            width: 35px;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script type="text/javascript" src="scripts/jquery-3.2.1.js"></script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBs4DQ_5DQkI_0WomNi3SveyYBkYOQ6yeY"></script>
+    <script type="text/javascript" src="scripts/markerwithlabel.js"></script>    
+
+    <script type="text/javascript" src="scripts/parking.js"></script>
+
+    <script type="text/javascript" src="config/config.js"></script>
+    <script type="text/javascript" src="scripts/main.js"></script>
+ 
+</body>
+</html>
