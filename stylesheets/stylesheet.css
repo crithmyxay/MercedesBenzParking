@@ -25,6 +25,17 @@ body {
     text-decoration: none;
 }
 
+.centerDiv {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.desc {
+    color: white;
+}
+
 div.app {
     display: flex;
     margin-top: 190px;
