@@ -27,6 +27,7 @@ body {
 
 div.app {
     display: flex;
+    margin-top: 190px;
     flex-direction: column;
     justify-content: center;
 }

@@ -8,10 +8,18 @@
     font-size: 16px;
     font-family: Arial;
  
-    background-image: linear-gradient(#fff, #d3d3d3);
-    background-color: red;
+    background-image: linear-gradient(rgb(255, 255, 255), #d3d3d3);
+    background-color:rgba(255, 17, 0, 0.644);
+    margin: 30px 0 auto;
 }
-
+input{
+   /* display: none;*/
+   opacity: 0;
+}
+#matching-events{ 
+    margin-left: 200px;
+    background: #a001019e;
+}
 #calendar-container>div{
     padding: 0;
     margin-bottom: 10px;
@@ -27,6 +35,6 @@
 }
 
 .has_events{
-    color: rgba(255, 0, 0, 0.472)
+    color: (255, 17, 0, 0.644);
 
 }

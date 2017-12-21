@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="stylesheets/stylesheet.css">
     <link rel="stylesheet" href="stylesheets/stylesheets-calendar.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link href="stylesheets/glDatePicker.default.css" rel="stylesheet" type="text/css">
     <title>Mercedes-Benz Stadium Event guide</title>
 </head>
 <body>
@@ -24,6 +25,14 @@
              <a class="next" data-next>&#10095;</a>  
         </div>
         <div style="text-align:center" data-dot></div>
+
+            <input>
+                <div id="calendar">
+                    <!-- <span id="calendar-month-year">calendar</span> -->
+                </div>
+                <table id="matching-events">
+                </table>
+     
         <div class = "app">
             <div class = "ticketMaster">
                 <div class = "events" data-event-list>
@@ -45,18 +54,14 @@
         </div>
     </div>
 
-    <div id="calendar-container">
-        <div id="calendar">
-            <span id="calendar-month-year"> </span>
-        </div>
-        <div id="calendar-dates">
-        </div>
-    </div>
+    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="config/config.js"></script>
     <script src="scripts/main.js"></script>
     <script src="scripts/calendar.js"></script>
     <script type="text/javascript" src="scripts/parking.js"></script>
+    <script src="scripts/glDatePicker.min.js"></script>
+    
 </body>
 </html>
