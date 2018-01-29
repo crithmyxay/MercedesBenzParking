@@ -38,7 +38,7 @@ body {
 
 div.app {
     display: flex;
-    margin-top: 190px;
+    /* margin-top: 190px; */
     flex-direction: column;
     justify-content: center;
 }
@@ -113,7 +113,27 @@ a.logo {
     color: white;
 }
 
-* {box-sizing:border-box}
+#map {
+    /* height: 100%; */
+}
+
+/* html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+} */
+
+.labels {
+    color: white;
+    /* background-color: red; */
+    font-family:"Lucida Grande", "Arial", sans-serif;
+    font-size: 8px;
+    text-align: left;
+    width: 35px;
+    white-space: nowrap;
+}
+
+/* * {box-sizing:border-box} */
 
 /* Slideshow container */
 .slide {
@@ -232,6 +252,8 @@ a.logo {
         height: 45px;
     }
 
+}
+    
 @media screen and (min-width: 1200px) {
     body {
         width: 100%;
