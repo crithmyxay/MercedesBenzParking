@@ -56,25 +56,10 @@ function findParking() {
 var map;
 
 function initMap () {
-    var year = 2018;
-    var month = 01;
-    var day = 27;
-    var hour = 12;
-    var minute = 00;
-
-
-
-    var start_time_unformatted = new Date (`${year} ${month} ${day} ${hour}:${minute}:00`);
-    var start_time = start_time_unformatted.toISOString();
-    var end_time_unformatted = new Date(start_time_unformatted);
-    end_time_unformatted = new Date(end_time_unformatted.setHours(end_time_unformatted.getHours() + 5))
-    var end_time = end_time_unformatted.toISOString();
-    var query = `https://api.parkwhiz.com/v4/quotes/?q=venue_id:110865&start_time=${start_time}&end_time=${end_time}`
-    // var dict = new Map();
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 33.7550543, lng: -84.3977729}, 
-            zoom: 17
-        });
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 33.7550543, lng: -84.3977729}, 
+        zoom: 15
+    });
 
     // var locations = [];
     
