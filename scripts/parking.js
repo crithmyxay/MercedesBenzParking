@@ -3,9 +3,6 @@ var month = 01;
 var day = 27;
 var hour = 12;
 var minute = 00;
-
-
-
 var start_time_unformatted = new Date (`${year} ${month} ${day} ${hour}:${minute}:00`);
 var start_time = start_time_unformatted.toISOString();
 var end_time_unformatted = new Date(start_time_unformatted);
@@ -79,6 +76,9 @@ function initMap () {
     //     });
     // });
     // var value = dict.get(4);
+
+    var trafficLayer = new google.maps.TrafficLayer();
+        trafficLayer.setMap(map)
 
     function addMarkerListener(marker, infoWindow, map) {
         marker.addListener('click', function() {

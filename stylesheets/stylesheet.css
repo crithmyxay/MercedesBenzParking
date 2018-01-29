@@ -81,6 +81,12 @@ table, th, td {
 h2 {
     /* font-size: 2rem; */
     text-align: center;
+    margin: 2%;
+}
+
+span {
+    text-align: center;
+    margin: 2%;
 }
 
 tr {
