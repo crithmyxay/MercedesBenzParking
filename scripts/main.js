@@ -6,12 +6,12 @@ var imgArray = {
             "url": 'https://s1.ticketm.net/dam/a/375/606d24be-8ead-40aa-a622-22e5dfd02375_581101_TABLET_LANDSCAPE_LARGE_16_9.jpg'
         },
         {
-            "name": 'Carolina Panthers vs Atlanta Falcons',
-            "url": 'https://i.ytimg.com/vi/Qo5JwA1eBZs/maxresdefault.jpg'
+            "name": 'Monster Jam',
+            "url": 'https://i.gse.io/gse_media/116/10/1479774531-Monster-Jam-tickets.jpg?p=1'
         },
         {
-            "name": 'Peach Bowl, UCF Knights vs Auburn Tigers',
-            "url": 'https://s1.ticketm.net/dam/a/69a/a2272570-eeee-4e1f-af6e-d37247f4469a_237181_RETINA_LANDSCAPE_16_9.jpg'
+            "name": 'Monster Energy AMA Supercross',
+            "url": 'http://28b03yfvd7j3ji3l93ppzub1.wpengine.netdna-cdn.com/wp-content/uploads/2017/11/SuperCross_Logo-260.png'
         }
     ]
 }
@@ -65,7 +65,8 @@ function makeParty(party) {
         })
         var $tableDate = $('<td>', {
             text: drawDate,
-            class: 'date'
+            class: 'date',
+            dateId: `date${i}`
         })
         var $tableName = $('<td>', {
             class: 'name'
@@ -76,13 +77,13 @@ function makeParty(party) {
         })
         var $eventLink = $('<a>', {
             text: drawName,
-            href: '#'
+            href: '#ticketMaster',
+            class: 'link',
         })
         $drawEvent.append($tableDate);
         $drawEvent.append($tableName);
         $tableName.append($eventLink);
         $drawEvent.append($tablePrices);
-        // eventArray.push($drawEvent);
         $('.eventList').append($drawEvent);
     }
     return party
@@ -165,7 +166,6 @@ function slideShow() {
         eraseCurrentSlide()
         addSlide(slide[currentSlide]);
         addActiveDotClass(dots, currentSlide);
-
     })
     $('[data-next]').on('click', function(){
         removeActiveDotClass(dots, currentSlide);

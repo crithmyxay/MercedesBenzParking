@@ -1,6 +1,6 @@
-var year = 2017;
-var month = 12;
-var day = 31;
+var year = 2018;
+var month = 01;
+var day = 27;
 var hour = 12;
 var minute = 00;
 
@@ -119,7 +119,7 @@ function initMap () {
     }
     generateMarkers();
 
-    console.log(markers);
+    // console.log(markers);
 
 
 
@@ -145,3 +145,24 @@ function mapParkingResults() {
 mapParkingResults();
 // $(document).ready(google.maps.event.addDomListener(window, 'load', initMap));
 
+function changeMap(){
+    $('.eventList').on('click', '.date', function(event) {
+        event.preventDefault();
+        console.log($(this).html());
+        var year = parseInt($(this).html().slice(0,4));
+        var month = parseInt($(this).html().slice(5,7));
+        var day = parseInt($(this).html().slice(8));
+        console.log(day);
+        var start_time_unformatted = new Date (`${year} ${month} ${day} ${hour}:${minute}:00`);
+        window.start_time_unformatted = start_time_unformatted;
+        window.start_time = start_time_unformatted.toISOString();
+        end_time_unformatted = new Date(start_time_unformatted);
+        window.end_time_unformatted = new Date(end_time_unformatted.setHours(end_time_unformatted.getHours() + 5))
+        window.end_time = end_time_unformatted.toISOString();
+        query = `https://api.parkwhiz.com/v4/quotes/?q=venue_id:110865&start_time=${start_time}&end_time=${end_time}`
+        findParking();
+        mapParkingResults();
+    });
+}
+
+changeMap();
