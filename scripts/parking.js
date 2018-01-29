@@ -146,8 +146,8 @@ mapParkingResults();
 // $(document).ready(google.maps.event.addDomListener(window, 'load', initMap));
 
 function changeMap(){
-    $('.eventList').on('click', '.date', function(event) {
-        event.preventDefault();
+    $('.eventList').on('click', '.date', function() {
+        // event.preventDefault();
         console.log($(this).html());
         var year = parseInt($(this).html().slice(0,4));
         var month = parseInt($(this).html().slice(5,7));

@@ -7,6 +7,10 @@ body {
     font-family: 'Roboto Condensed', sans-serif;
 }
 
+img {
+    width: 100%;
+}
+
 /* The navigation bar */
 .navbar {
     overflow: hidden;
@@ -38,7 +42,6 @@ body {
 
 div.app {
     display: flex;
-    /* margin-top: 190px; */
     flex-direction: column;
     justify-content: center;
 }
@@ -47,7 +50,7 @@ div.app {
     display: flex;
     justify-content: center;
     border: 1px white solid;
-    width: 95%;
+    width: 50%;
     margin: 2%;
 }
 
@@ -96,7 +99,7 @@ a.logo {
 
 /* Main content */
 .main {
-    
+    max-width: 1800px;
 }
 
 .app {
@@ -112,16 +115,6 @@ a.logo {
     display: block;
     color: white;
 }
-
-#map {
-    /* height: 100%; */
-}
-
-/* html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-} */
 
 .labels {
     color: white;
@@ -203,11 +196,6 @@ a.logo {
   animation-duration: 1.5s;
 }
 
-#map {
-    height: 400px;
-    width: 65%;
-}
-
 .labels {
     color: white;
     /* background-color: red; */
@@ -242,6 +230,19 @@ a.logo {
     .logo img {
         width: auto;
         height: 35px;
+    }
+
+    .app > div {
+        display: flex;
+        justify-content: center;
+        border: 1px white solid;
+        width: 95%;
+        margin: 2%;
+    }
+
+    .parkWhiz {
+        position: static;
+
     }
 }
 
