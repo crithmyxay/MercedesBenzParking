@@ -1,8 +1,8 @@
 # MercedesBenzParking
 
-<video width="600" height="400">
-  <source src="/images/demo1.mov" type="video/mov">
-</video>
+<video controls="controls" width="800" height="600" 
+       name="demo vid" src="/images/demo1.mov"></video>
+
 
 <h2>What is it?</h2>
 This app takes all events occurring at the Mercedes Benz Stadium in Atlanta, GA and shows their dates and price ranges and shows the parking for that date.
