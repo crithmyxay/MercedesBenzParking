@@ -1,8 +1,7 @@
 # MercedesBenzParking
 
 <video width="600" height="400">
-  <source src="/images/demo1.mov" type="video/mp4">
-  
+  <source src="/images/demo1.mov" type="video/mov">
 </video>
 
 <h2>What is it?</h2>
