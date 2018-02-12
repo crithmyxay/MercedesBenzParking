@@ -62,3 +62,10 @@ Our early ideas of the app were to have the TicketMaster API allow us to buy tic
   <p>
    If we had more time, we would add the ability to purchase parking on our app. We would also work on the styling of the page to be a little more visually appealing. 
   </p>
+
+<h3>Mac Development</h3>
+<ol>
+<li>Clone or download our repository</li>
+<li>In your console, navigate to the directory containing index.html</li>
+<li>In your browser (Chrome works best), go to the URL localhost:3000 or double click index.html</li>
+</ol>
